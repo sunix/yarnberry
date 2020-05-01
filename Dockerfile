@@ -8,7 +8,7 @@ RUN mkdir -p /home/user && chgrp -R 0 /home && chmod -R g=u /etc/passwd /etc/gro
 USER 10001
 ENV HOME=/home/user
 WORKDIR /home/user
-RUN yarn set version berry && chmod -R go+w /home/user
+RUN yarn set version berry && chmod -R go+w /home/user/.yarn
 
 WORKDIR /projects
 ENTRYPOINT [ "/entrypoint.sh" ]
