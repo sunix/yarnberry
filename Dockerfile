@@ -1,5 +1,4 @@
 FROM node:14
-RUN yarn set version berry
 
 USER 0
 # Set permissions on /etc/passwd and /home to allow arbitrary users to write
@@ -9,5 +8,8 @@ RUN mkdir -p /home/user && chgrp -R 0 /home && chmod -R g=u /etc/passwd /etc/gro
 USER 10001
 ENV HOME=/home/user
 WORKDIR /projects
+
+RUN yarn set version berry
+
 ENTRYPOINT [ "/entrypoint.sh" ]
 CMD ["tail", "-f", "/dev/null"]
